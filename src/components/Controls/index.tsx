@@ -25,12 +25,10 @@ const Controls: React.FC<ControlsProps> = ({ data, request }) => {
         urlOfNext.includes('&')
           ? +urlOfNext.substring(
               urlOfNext.search('page=') + 5,
-              urlOfNext.lastIndexOf('&')
+              urlOfNext.indexOf('&')
             ) - 1
-          : +urlOfNext.substring(
-              urlOfNext.lastIndexOf('=') + 1,
-              urlOfNext.length
-            ) - 1
+          : +urlOfNext.substring(urlOfNext.indexOf('=') + 1, urlOfNext.length) -
+              1
       )
     } else {
       setCurrentPage(data?.info.pages)
